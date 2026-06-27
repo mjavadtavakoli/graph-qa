@@ -64,3 +64,19 @@ The server should reject the unsupported command, return an appropriate error me
 
 
 
+
+
+---
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+---
