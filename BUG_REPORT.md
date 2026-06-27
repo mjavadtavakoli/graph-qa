@@ -175,3 +175,56 @@ Observed during file validation testing.
 **Status:** Open
 
 ---
+
+## BUG-006
+
+### Title
+
+Server crashes when processing an unsupported command.
+
+**Severity:** Medium
+
+**Priority:** Medium
+
+**Environment:**
+
+* Python 3.13
+* SQLite
+* ZeroMQ
+
+### Preconditions
+
+* Server is running.
+* Client is connected.
+* A command file contains an unsupported command.
+
+### Steps to Reproduce
+
+1. Create a JSON file containing an undefined command (e.g., `"hello"`).
+2. Start the server.
+3. Execute:
+
+```bash
+python3 client.py --file samples/unknown_command.json
+```
+
+4. Observe the server and client outputs.
+
+### Actual Result
+
+* The server terminates with a `KeyError` exception.
+* The client receives the raw error value:
+
+```
+'hello'
+```
+
+### Expected Result
+
+The server should detect that the command is unsupported, return a meaningful error message to the client, and continue running without terminating.
+
+### Additional Notes
+
+The application does not gracefully handle unsupported commands and exposes the raw exception to the client.
+
+**Status:** Open
