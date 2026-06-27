@@ -7,7 +7,7 @@
 
 #### Actual result :
 
-Server terminates with `peewee.IntegrityError`. (با ریجستری تکراری سرور کرش میکند)
+Server terminates with `peewee.IntegrityError`. (با ریجستری تکراری سرور کرش میکند) bug!
 
 #### Expected result : 
 
@@ -45,17 +45,17 @@ Json file does not exist. (نمایش خطا به درستی)
 ---
 ### Scenario one [4]
 
-###Steps to Reproduce:
+### Steps to Reproduce:
 
-Create a JSON file containing an unknown command.
-Start the server.
-Run the client using the new JSON file.
-Observe the server and client responses.
+1. Send a request with an unsupported command (e.g., `hello`).
+2. Observe the server and client responses.
 
-###Expected Result:
+### Actual Result (Current Implementation):
 
-The application should reject the unsupported command and return a meaningful error message without stopping the server.
+The server crashes with a `KeyError`, and the client receives the raw error message (`'hello'`).(کلاینت جزیات فایل را بدون برسی ارسال کرد برای سرور و سرور پس از برسی برخورد با دستور پشتیبانی نشده از ادامه کار کردن جلو گیری کرد و داون شد) bug!
 
-###Actual Result (Current Implementation):
+### Expected Result:
 
-The server throws an unexpected error because the command is not found in the command mapping.
+The server should reject the unsupported command, return an appropriate error message, and continue running.
+
+
