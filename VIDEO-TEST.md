@@ -58,4 +58,10 @@ The server crashes with a `KeyError`, and the client receives the raw error mess
 
 The server should reject the unsupported command, return an appropriate error message, and continue running.
 
+[لطفاً برای دانلود ویدیوی سناریوی چهارم کلیک کنید](https://raw.githubusercontent.com/mjavadtavakoli/graph-qa/main/other/MT-004%20-%20bugserver.mov)
+
+
+
+
+
 
